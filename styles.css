@@ -256,3 +256,81 @@ header{
     background-color: var(--secondary-font-color);
 }
 /*About Us */
+.global-headline{
+    text-align: center;
+    margin-top: 3.9rem;
+}
+.about-us-story .global-headline{
+    margin-top: 6.9rem;
+}
+
+.global-headline .asterisk{
+    color: var(--body-font-color);
+    margin-top: 2.4 rem 0;
+}
+
+.headline-dark{
+    color: var(--main-font-color-dark);
+    letter-spacing: .7rem;
+    margin-right: -.7rem;
+}
+
+.global-headline .sub-headline{
+    letter-spacing: -1px;
+    line-height: .42;
+}
+
+.aboutus-info{
+    text-align: center;
+}
+
+.aboutus-description{
+    margin-bottom: 3rem;
+}
+
+.aboutus-description p{
+    line-height: 1.6;
+    margin-bottom: 2.4rem;
+}
+
+.body-btn{
+    font-size: 1.5rem;
+    color: var(--secondary-font-color);
+    position: relative;
+    transition: color .5s;
+}
+
+.body-btn::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 2px;
+    background-color: var(--secondary-font-color);
+    transition: background-color .5s;
+}
+
+.body-btn:hover,
+.body-btn:focus{
+    color: var(--main-font-color-dark)
+}
+
+.body-btn:hover::before,
+.body-btn:focus::before{
+    background-color: var(--main-font-color-dark);
+}
+
+/*The Tream*/
+.theteam{
+    background: url("images/theteam.jpg") center no-repeat;
+    background-size: cover;
+}
+
+.between{
+    min-height: 65vh;
+    display: flex;
+    align-items: center;
+}
+
+/*The Team Text*/
