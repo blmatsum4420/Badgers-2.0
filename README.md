@@ -1,3 +1,5 @@
+Start Server: python manage.py runserver
+=======
 # Sweater Weather
 ## Badgers-2.0: Collin Chee, Matthew Martel, Brandon Matsumoto, Jacob Saunders
 

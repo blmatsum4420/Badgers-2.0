@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pending</title>
+
+    <!--Font awesome CDN-->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles2.css' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <!--Scroll reveal CDN-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script>
+        function changeImage() {
+            document.getElementById("graphimage").src = "{% static 'images/jacob.jpg' %}";
+        }
+    </script>
+
+    <script>
+        async function sendDataToModel(){
+            
+            var start = document.getElementById("start_year").value
+            var end = document.getElementById("end_year").value
+            console.log(start, end)
+            var feature = document.getElementById("selecttype").value
+            $.post("changeImage", {end: end, start: start, feature:feature})
+            console.log("DONE")
+            delay = 5000
+            if (end > 2020) {
+                delay = 5000 + ((end - 2020) * 500)
+            }
+            await new Promise(r=> setTimeout(r, delay))
+            //const sleep = ms => new Promise(r=> setTimeout(r, 5000))
+            if(feature == "Air Temp Min"){
+                document.getElementById("graphimage").src = "{% static 'plots/Air_Temp_Min.jpg' %}";
+            }else if(feature == "Air Temp Max"){
+                document.getElementById("graphimage").src = "{% static 'plots/Air_Temp_Max.jpg' %}";
+            }
+            else if(feature == "Soil Temp Min"){
+                document.getElementById("graphimage").src = "{% static 'plots/Soil_Temp_Min.jpg' %}";
+            }
+            else if(feature == "Precipitation"){
+                document.getElementById("graphimage").src = "{% static 'plots/Precipitation.jpg' %}";
+            }
+            else if(feature == "Solar Radiation"){
+                document.getElementById("graphimage").src = "{% static 'plots/Solar_Radiation.jpg' %}";
+            }
+            else if(feature == "AQI Value"){
+                document.getElementById("graphimage").src = "{% static 'plots/AQI Value.jpg' %}";
+            }
+            console.log("plots/" + feature + ".jpg")
+
+        }
+
+
+    </script>
+
+    <script>
+        /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown menu if the user clicks outside of it
+        window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+            }
+        }
+        }
+    </script>
+    
+</head>
+
+<body class="mainpage">
+    <div class = "mainpage-middle">
+        <!--Nav bar starts here-->
+        <header>
+            <div class="container">
+            <nav class="nav">
+                <div class="menu-toggle">
+                <!--
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-times"></i>
+                -->
+                </div>
+                <ul class="nav-list item-toggle">
+                <li class="nav-item ">
+                    <a href="home" class="nav-link active">Home</a>
+                </li>
+                </ul>
+            </nav>
+            </div>
+        </header>
+      <!--Nav bar starts here-->
+        <div class="container">
+            <h1 class="headline">Data Display</h1>
+            <br />
+            <div style="height: 100%; width: 100%; margin: 0 auto;">
+                {% load static %}
+                <img id="graphimage" src="{% static 'plots/Air_Temp_Max.jpg' %}">
+            </div>
+            
+            <br />
+            <br />
+            <script
+                src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+            </script>
+
+            <!-- This slider is used to select the degree of model to be used -->
+            <!--
+            <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+                <div id="myDropdown" class="dropdown-content">
+                  <a href="#">Air Temp Min</a>
+                  <a href="#">Soil Temp Min</a>
+                  <a href="#">Precipitation</a>
+                  <a href="#">Air Temp Max</a>
+                  <a href="#">Air Temp Min</a>
+                  <a href="#">Solar Radiation</a>
+                  <a href="#">AQI Value</a>
+                </div>
+            </div>
+            -->
+
+              <label for="lang">Model Type</label>
+            <select name="modelTypes" id="selecttype">
+                <option value="Air Temp Min">Air Temp Min</option>
+                <option value="Soil Temp Min">Soil Temp Min</option>
+                <option value="Precipitation">Precipitation</option>
+                <option value="Air Temp Max">Air Temp Max</option>
+                <option value="Air Temp Min">Air Temp Min</option>
+                <option value="Solar Radiation">Solar Radiation</option>
+                <option value="AQI Value">AQI Value</option>
+            </select>
+            
+
+            <div class = "slidecontainer">
+                <table class = "slidecontainer">
+                    <tr>
+                        <td class="headline-smaller">Start Year</td>
+                        <td>
+                            <input class = "input" id="start_year" value = "2000" type="text" required name="START_YEAR" 
+                                onchange="document.getElementById('startyearslider').value = this.value">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan = "2">
+                            <input class = "slider" type = "range" value = "2000" id = "startyearslider" min = "1980" 
+                                max = "2050" step = "1" oninput="document.getElementById('start_year').value = this.value">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="headline-smaller">End Year</td>
+                        <td>
+                            <input class = "input" id="end_year" value = "2020" type="text" required name="END_YEAR" 
+                                onchange="document.getElementById('endyearslider').value = this.value">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan = "2">
+                            <input class = "slider" type = "range" value = "2020" id = "endyearslider" min = "1980" 
+                                max = "2050" step = "1" oninput="document.getElementById('end_year').value = this.value">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <button class = "applybutton" onclick="sendDataToModel()">Apply</button>
+            
+            
+        </div>
+        {% load static %}
+        <script src="{% static 'main.js' %}"></script>
+    </div>
+    <div class = "mainpage-middle">
+        <h1 class="headline">Trends</h1>
+
+        <div style="height: 100%; width: 100%; margin: top=50px;">
+            {% load static %}
+            <img id="graphimage" src="{% static 'plots/Air_Temp_Max_trends.jpg' %}">
+        </div>
+    </div>
+    
+</body>
+
+</html>
+
