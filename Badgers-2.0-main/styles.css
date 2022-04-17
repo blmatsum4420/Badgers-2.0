@@ -357,7 +357,7 @@ header {
 
 /*tastefull recipes*/
 .transition-1 {
-  background: url(images/green.jpg) center no-repeat;
+  background: url(images/aboutus.jpg) center no-repeat;
   background-size: cover;
 }
 
@@ -382,7 +382,7 @@ header {
 /* The perfect blend*/
 
 .transition-2 {
-  background: url("images/forest.jpg") center no-repeat;
+  background: url("images/teampic.jpg") center no-repeat;
   background-size: cover;
 }
 
@@ -525,10 +525,6 @@ footer {
   }
   .headline {
     font-size: 4.7rem;
-    letter-spacing: 0.8rem;
-  }
-  .headline-smaller {
-    font-size: 3.0rem;
     letter-spacing: 0.8rem;
   }
   .line {
