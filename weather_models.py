@@ -73,7 +73,7 @@ def make_fig(model, lookahead, title, ylabel, start=None, save=True):
         save_fig(fig1, fig2, title)
     return fig1, fig2
 
-def run_model(feature, lookahead):
+def run_model(feature, lookahead, start=None):
 	if feature == "AQI Value":
 		data = zip(yolo_weather_df['Date'], yolo_weather_df[" AQI Value"])
 		prophet_df = pd.DataFrame(data, columns=['ds', 'y'])
@@ -87,7 +87,7 @@ def run_model(feature, lookahead):
 		    yolo_m = Prophet()
 		    yolo_m.fit(prophet_df)
 		    save_model(yolo_m, feature)
-		make_fig(yolo_m, lookahead, "AQI Value", "AQI")
+		make_fig(yolo_m, lookahead, "AQI Value", "AQI", start=start)
 	else:
 		try:
 		    m = load_model(feature)
@@ -97,4 +97,4 @@ def run_model(feature, lookahead):
 		    print("Couldn't load model", feature)
 		    m = make_model(davis_weather_df, feature)
 		    save_model(m, feature)
-		make_fig(m, lookahead, feature, ylabels[feature])
+		make_fig(m, lookahead, feature, ylabels[feature], start=start)
