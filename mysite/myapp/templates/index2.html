@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pending</title>
+
+    <!--Font awesome CDN-->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <!--Scroll reveal CDN-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    
+</head>
+
+<body class="">
+    <!--holds nav bar-->
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-times"></i>
+                </div>
+                {% load static %}
+                <a href="home" class="logo"><img src="{% static 'images/logo-rosa.png' %}" alt=""></a>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="home" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="data_display" class="nav-link">Graphs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about_us" class="nav-link">About</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!--Header ends here-->
+    <!--Hero Starts-->
+    <section class="hero" id="hero">
+        <div class="class container">
+            <h2 class="sub-headline">
+                <span class="first-letter">W</span>elcome
+            </h2>
+            <h1 class="headline">The Project</h1>
+            <div class="headline-description">
+                <div class="separator">
+                    <div class="line line-left"></div>
+                    <div class="asterisk"><i class="fas fa-asterisk"></i></div>
+                    <div class="line line-right"></div>
+                </div>
+                <div class="single-animation">
+                    <h5>Ready to be opened</h5>
+                    <a href='data_display' class="btn cta-btn">Button1</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Hero ends-->
+    <!--about us-->
+    <section class="about-us-story"> <!--discover-our-story-->
+        <div class="container">
+            <div class="aboutus-info"> <!--restraunt-info-->
+                <div class="aboutus-description padding-right animate-left"> <!--restraunt-description-->
+                    <div class="global-headline">
+                        <h2 class="sub-headline">
+                            <span class="first-letter">T</span>his is
+                        </h2>
+                        <h1 class="headline headline-dark">Our Pledge</h1>
+                        <div class="asterisk"><i class="fas fa-asterisk"></i></div>
+                    </div>
+                    <p>
+                        According to all known laws of aviation, there is no way that a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway. Because bees don’t care what humans think is impossible.” SEQ. 75 - “INTRO TO BARRY” INT
+                    </p>
+                    <a href="" class="btn body-btn">About Us</a>
+                </div>
+                <div class="about-info-img animate-right">
+                    {% load static %}
+                    <img src="{% static 'images/aboutus.jpg' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--About Us Ends Here-->
+    <!--theateam starts here-->
+    <section class="theteam">
+        <div class="container">
+            <div class="global-headline">
+                <div class="animate-top">
+                    <h2 class="sub-headline">
+                        <span class="first-letter">T</span>he
+                    </h2>
+                </div>
+                <div class="animate-bottom">
+                    <h1 class="headline headline-dark">Team</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+<!--theteamendshere-->
+<section class="the-team-text">
+    <div class="container">
+        <div class="theteam-info">
+            <div class="image-group padding-right animate-left">
+                {% load static %}
+                <img src="{% static 'images/brandon.jpg' %}" alts="">
+                {% load static %}
+                <img src="{% static 'images/matt.jpg' %}" alts="">
+                {% load static %}
+                <img src="{% static 'images/jacob.jpg' %}" alts="">
+                {% load static %}
+                <img src="{% static 'images/collin.jpg' %}" alts="">
+            </div>
+            <div class="team-description animate-right">
+                <div class="global-headline">
+                    <h2 class="sub-headline">
+                        <span class="first-letter">W</span>ho
+                    </h2>
+                    <h1 class="headline headline-dark">We are</h1>
+                    <div class="asterisk"><i class="fas fa-asterisk"></i></div>
+                </div>
+                <p>
+                    According to all known laws of aviation, there is no way that a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway. Because bees don’t care what humans think is impossible.” SEQ. 75 - “INTRO TO BARRY” INT
+                </p>
+                <a href="#" class="btn body-btn">View something</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% load static %}
+<script src="{% static 'main.js' %}"></script>
+</body>
+
+</html>
+
