@@ -73,12 +73,12 @@ def make_fig(model, lookahead, title, ylabel, start=None, save=True):
         save_fig(fig1, fig2, title)
     return fig1, fig2
 
-def run_model(feature, lookahead, start=None):
+def run_model(feature, end, start=None):
 	if feature == "AQI Value":
 		data = zip(yolo_weather_df['Date'], yolo_weather_df[" AQI Value"])
 		prophet_df = pd.DataFrame(data, columns=['ds', 'y'])
 		feature = "AQI Value"
-
+        lookahead = end - 2005
 		try:
 		    yolo_m = load_model(feature)
 		    print("Successfully loaded model", feature)
@@ -89,6 +89,7 @@ def run_model(feature, lookahead, start=None):
 		    save_model(yolo_m, feature)
 		make_fig(yolo_m, lookahead, "AQI Value", "AQI", start=start)
 	else:
+        lookahead = end - 2022
 		try:
 		    m = load_model(feature)
 		    models[feature] = m
