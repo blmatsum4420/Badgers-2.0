@@ -86,7 +86,7 @@ header {
 }
 .nav-list {
   list-style: none;
-  position: fixed;
+  position: flex;
   top: 0;
   left: 0;
   width: 80%;
@@ -272,7 +272,7 @@ header {
   padding: 1rem 0rem;
   color: var(--body-font-color);
   border-radius: 0.4rem;
-  transition: background-color 0.5sec;
+  transition: background-color 0.5s;
 }
 
 .cta-btn:hover,
