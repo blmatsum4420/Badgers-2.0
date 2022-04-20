@@ -31,7 +31,7 @@
             var feature = document.getElementById("selecttype").value
             $.post("changeImage", {end: end, start: start, feature:feature})
             console.log("DONE")
-            delay = 5000
+            delay = 12000
             if (end > 2020) {
                 delay = 5000 + ((end - 2020) * 500)
             }
@@ -53,6 +53,23 @@
             }
             else if(feature == "AQI Value"){
                 document.getElementById("graphimage").src = "{% static 'plots/AQI Value.jpg' %}";
+            }
+            if(feature == "Air Temp Min"){
+                document.getElementById("graphimage2").src = "{% static 'plots/Air_Temp_Min_trends.jpg' %}";
+            }else if(feature == "Air Temp Max"){
+                document.getElementById("graphimage2").src = "{% static 'plots/Air_Temp_Max_trends.jpg' %}";
+            }
+            else if(feature == "Soil Temp Min"){
+                document.getElementById("graphimage2").src = "{% static 'plots/Soil_Temp_Min_trends.jpg' %}";
+            }
+            else if(feature == "Precipitation"){
+                document.getElementById("graphimage2").src = "{% static 'plots/Precipitation_trends.jpg' %}";
+            }
+            else if(feature == "Solar Radiation"){
+                document.getElementById("graphimage2").src = "{% static 'plots/Solar_Radiation_trends.jpg' %}";
+            }
+            else if(feature == "AQI Value"){
+                document.getElementById("graphimage2").src = "{% static 'plots/AQI Value_trends.jpg' %}";
             }
             console.log("plots/" + feature + ".jpg")
 
@@ -190,7 +207,7 @@
 
         <div style="height: 100%; width: 100%; margin: top=50px;">
             {% load static %}
-            <img id="graphimage" src="{% static 'plots/Air_Temp_Max_trends.jpg' %}">
+            <img id="graphimage2" src="{% static 'plots/Air_Temp_Max_trends.jpg' %}">
         </div>
     </div>
     
