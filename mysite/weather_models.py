@@ -96,4 +96,5 @@ def run_model(feature, end, start=None):
 			print("Couldn't load model", feature)
 			m = make_model(davis_weather_df, feature)
 			save_model(m, feature)
+		print(lookahead, start)
 		make_fig(m, lookahead, feature, ylabels[feature], start=start)
